@@ -1,7 +1,13 @@
 import { IsNotEmpty } from 'class-validator';
-import { ManyToOne, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  ManyToOne,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  JoinColumn,
+} from 'typeorm';
 import { User } from './user.entity';
-import { Lessen } from './lessen.entity';
+import { Lesson } from './lesson.entity';
 
 @Entity()
 export class Evaluation {
@@ -12,9 +18,17 @@ export class Evaluation {
   @IsNotEmpty()
   score: string;
 
+  @Column()
+  user_id: number;
+
   @ManyToOne(() => User, (user) => user.evaluations)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @ManyToOne(() => Lessen, (user) => user.evaluations)
-  lessen: Lessen;
+  @Column()
+  lesson_id: number;
+
+  @ManyToOne(() => Lesson, (user) => user.evaluations)
+  @JoinColumn({ name: 'lesson_id' })
+  lesson: Lesson;
 }

@@ -3,7 +3,7 @@ import { OneToMany, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { Evaluation } from './evaluation.entity';
 
 @Entity()
-export class Lessen {
+export class Lesson {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -15,6 +15,6 @@ export class Lessen {
   @IsNotEmpty()
   code: string;
 
-  @OneToMany(() => Evaluation, (evaluations) => evaluations.lessen)
+  @OneToMany(() => Evaluation, (evaluations) => evaluations.lesson)
   evaluations: Evaluation[];
 }

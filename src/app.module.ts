@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { User } from './entities/user.entity';
-import { Lessen } from './entities/lessen.entity';
+import { Lesson } from './entities/lesson.entity';
 import { Evaluation } from './entities/evaluation.entity';
+import { UserModule } from './user/user.module';
+import { LessonsModule } from './lessons/lessons.module';
 
 @Module({
   imports: [
@@ -17,11 +18,12 @@ import { Evaluation } from './entities/evaluation.entity';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User, Lessen, Evaluation],
+      entities: [User, Lesson, Evaluation],
       synchronize: true,
     }),
+    UserModule,
+    LessonsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
