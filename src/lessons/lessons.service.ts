@@ -26,7 +26,7 @@ export class LessonsService {
     createEvaluationDto: CreateEvaluationDto & { lesson_id: number },
   ): Promise<Evaluation> {
     const user = await this.UserRepository.findOneBy({
-      id: createEvaluationDto.userId,
+      id: createEvaluationDto.user_id,
     });
 
     if (!user) {

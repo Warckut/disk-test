@@ -10,5 +10,5 @@ export class CreateEvaluationDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsNumber()
-  userId: number;
+  user_id: number;
 }
