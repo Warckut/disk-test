@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { LessonsService } from './lessons.service';
-import { CreateLessonDto } from './create-lesson.dto';
-import { CreateEvaluationDto } from './create-evaluation.dto';
+import { CreateLessonDto } from './dtos/create-lesson.dto';
+import { CreateEvaluationDto } from './dtos/create-evaluation.dto';
 
 @Controller('/api/lessons')
 export class LessonsController {
